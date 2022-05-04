@@ -76,7 +76,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT'),
+        'salt' => env('SECURITY_SALT','1j50so-6fk328s-F39Oq2-129bR24'),
     ],
 
     /*
@@ -290,10 +290,14 @@ return [
          * in app_local.php depending on the applications needs.
          */
         'default' => [
-            'className' => Connection::class,
-            'driver' => Mysql::class,
+            'className' => 'Cake\Database\Connection',
+            'driver' => 'Cake\Database\Driver\Postgres',
             'persistent' => false,
-            'timezone' => 'UTC',
+            'host' => '172.20.11.100',
+            'username' => 'admin',
+            'password' => '1234',
+            'database' => 'cake_cms',
+         
 
             /*
              * For MariaDB/MySQL the internal default changed from utf8 to utf8mb4, aka full utf-8 support, in CakePHP 3.6
@@ -332,18 +336,18 @@ return [
         /*
          * The test connection is used during the test suite.
          */
-        'test' => [
-            'className' => Connection::class,
-            'driver' => Mysql::class,
-            'persistent' => false,
-            'timezone' => 'UTC',
-            //'encoding' => 'utf8mb4',
-            'flags' => [],
-            'cacheMetadata' => true,
-            'quoteIdentifiers' => false,
-            'log' => false,
-            //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
-        ],
+        // 'test' => [
+        //     'className' => Connection::class,
+        //     'driver' => Mysql::class,
+        //     'persistent' => false,
+        //     'timezone' => 'UTC',
+        //     //'encoding' => 'utf8mb4',
+        //     'flags' => [],
+        //     'cacheMetadata' => true,
+        //     'quoteIdentifiers' => false,
+        //     'log' => false,
+        //     //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
+        // ],
     ],
 
     /*
